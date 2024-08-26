@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="STYLEMATE-1.0.0.css">
+    <title>NPOFusion</title>
+    <style>
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header nav ul li {
+            margin-right: 20px;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Hero Section Styles */
+        #hero {
+            background-image: url({{hero_shot}});
+            background-size: 100% 100%;
+            background-position: 0% 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+			padding-bottom: 40px;
+		}
+        .skin {
+            display: flex;
+			flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+			width: 90vw;
+			padding: 20px;
+			text-align: center;
+            min-height: 80vh;
+		}
+        #hero>.skin {
+            color: #fff;
+			background-color: #ffa6;
+			background-image: radial-gradient(#0000, #000);
+			font-family: arial,sans-serif;
+			font-weight: bold;
+			text-shadow: 4px 4px 5px black;
+        }
+
+        #hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        #hero p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+		button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+			box-shadow: -2px -2px 3px #0f9, 2px 2px 3px #09f;
+        }
+
+        button:hover {
+            background-color: #444;
+			box-shadow: -2px -2px 3px #0f9, 2px 2px 3px #09f, inset 0 0 7px 5px #fff8;
+        }
+
+        /* About Section Styles */
+        #about {
+			display: flex;
+			align-items: center;
+            padding: 2em;
+            background-color: #f7f7f7;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            min-height: 100vh;
+        }
+
+        #about p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        /* Services Section Styles */
+		#services {
+			background-color: #09f6;
+			background-image: radial-gradient(#0000, #059);
+        }
+
+        /* Resources Section Styles */
+        #resources {
+            padding: 2em;
+            background-color: #f7f7f7;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #resources h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        #resources ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #resources li {
+            margin-bottom: 10px;
+        }
+
+        #resources li::before {
+            content: "\2022";
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        /* Community Section Styles */
+        #community {
+            padding: 2em;
+            background-color: #f7f7f7;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #community h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        #community p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+		        /* Contact Section Styles */
+        #contact {
+            padding: 2em;
+            background-color: #f7f7f7;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #contact h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        #contact p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        #contact form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #contact input, #contact textarea {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            width: 50%;
+        }
+
+        #contact button[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #contact button[type="submit"]:hover {
+            background-color: #444;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #058;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+            clear: both;
+        }
+
+        footer p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+		.centered-screen {
+			align-items: center;
+			justify-content: center;
+			min-height: 100vh;
+		}
+		.outer-shadow {
+			box-shadow: 0 0 5px 1px #000;
+		}
+		.inner-shadow {
+			box-shadow: inset 0 0 5px 1px #000;
+		}
+		.full-width {
+			width: 100%;
+		}
+		.flex-column {
+			flex-direction: column;
+		}
+		.justify-space-around {
+			justify-content: space-around;
+		}
+		#mobile-nav-btn,#mobile-nav-btn2 {
+			display: none;
+		}
+		@media (orientation: portrait) {
+			.display-flex {
+				flex-direction: column;
+			}
+			#hero>.skin {
+				margin-top: 30px;
+			}
+			nav>ul {
+				flex-direction: column;
+			}
+			nav>ul>li {
+				display: none;
+				margin: 5px;
+				margin-right: 5px!important;
+				padding: 5px;
+				font-size: 22px;
+			}
+			header:not(:has(:target))>nav>ul>li#mobile-nav-btn {
+				display: block;
+			}
+			header:has(:target)>nav>ul>li {
+				border: 1px solid #fff;
+				box-shadow: inset 0 0 3px #fff;
+				display: block;
+			}
+			header:has(:target)>nav>ul>li#mobile-nav-btn2 {
+				display: block;
+			}
+			header:has(:target)>nav>ul>li#mobile-nav-btn {
+				display: none;
+			}
+		}
+    </style>
+</head>
+<body>
+    <header>
+        <nav id="nav">
+            <ul>
+                <li id="mobile-nav-btn"><a href="#nav">&#8801;</a></li>
+                <li id="mobile-nav-btn2"><a href="#">&times;</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+				{% if 1 == 2 %}
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#community">Community</a></li>
+				{% endif %}
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="hero">
+			<div class="skin">
+				<h1>Empowering Non-Profits in the Digital Age</h1>
+				<p>Amplify your online presence, expand your reach, and drive greater impact with NPOFusion</p>
+				<button>Get Started</button>
+			</div>
+        </section>
+        <section id="about">
+			<div class="skin">
+				<h2>About {{company_name}}</h2>
+				<p>{{company_description}}</p>
+				<h3>Mission</h3>
+				<p>{{company_mission}}</p>
+				<h3>Vision</h3>
+				<p>{{company_vision}}</p>
+			</div>
+        </section>
+        <section id="services" class="inner-shadow display-flex centered-screen">
+			<div class="skin">
+				<h2 class="color-fff font-size-35">Our Services</h2>
+				<div class="display-flex">
+					{% for service_name in service_names %}
+					<div class="full-width display-flex flex-column justify-space-around margin-10 bgcolor-fff color-000 padding-10 border-radius-15 outer-shadow">
+						<div class="display-block font-size-25 font-weight-bold">{{service_name}}</div>
+						<div class="display-block">{{{{service_name}}_description}}</div>
+						<div class="display-block font-weight-bold">Starting from <i>{{{{service_name}}_price}}</i></div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+        </section>
+		{% if 1 == 2 %}
+        <section id="resources">
+            <h2>Resources</h2>
+            <ul>
+                <li><a href="#">Article: "10 Tips for Non-Profit Social Media Success"</a></li>
+                <li><a href="#">Webinar: "Introduction to Online Fundraising"</a></li>
+                <li><a href="#">Template: "Non-Profit Website Template"</a></li>
+            </ul>
+        </section>
+        <section id="community">
+            <h2>Community</h2>
+            <p>Join our community of non-profits and experts to connect, ask questions, and share best practices.</p>
+        </section>
+        {% endif %}
+		<section id="contact">
+            <h2>Contact Us</h2>
+            <p>Get in touch with us to learn more about our services and how we can help your non-profit.</p>
+			{% if 1 == 2 %}
+            <form>
+                <input type="text" placeholder="Name">
+                <input type="email" placeholder="Email">
+                <textarea placeholder="Message"></textarea>
+                <button type="submit">Send</button>
+            </form>
+			{% endif %}
+			<script charset="utf-8" type="text/javascript" src="https://js.hsforms.net/forms/embed/v2.js"></script>
+			<script>hbspt.forms.create({region: "na1",portalId: "23541408",formId: "bb4e0067-984d-49ca-8d09-086cd7a52337"});</script>
+        </section>
+    </main>
+    <footer class="outer-shadow">
+        <p>&copy; 2024 NPOFusion</p>
+    </footer>
+    <script>
+        // Add event listener to button
+        document.querySelector('button').addEventListener('click', function() {
+            alert('Button clicked!');
+        });
+    </script>
+</body>
+</html>
+<script src="RelativeJS-1.0.0.js"></script>	
+<script>	
+	page.setItem('company_name','NPOFusion');
+	page.setItem('company_description','NPOFusion is a collaborative project dedicated to helping Non-Profit Organizations (NPOs) amplify their online presence, expand their reach, and drive greater impact. By providing expert guidance, resources, and support, we empower NPOs to harness the power of digital tools and strategies to achieve their missions. Through NPOFusion, we aim to bridge the gap between the non-profit sector and the digital world, fostering a community of connected, tech-savvy organizations that can effectively engage, inspire, and mobilize their audiences.');
+	page.setItem('company_mission','At NPOFusion, we envision a world where non-profits are not limited by their digital capabilities but are instead empowered by them. We strive to bridge the gap between the non-profit sector and the digital world, fostering a community of connected, tech-savvy organizations that can engage, inspire, and mobilize their audiences with greater efficacy.');
+	page.setItem('company_vision','To empower Non-Profit Organizations (NPOs) by enhancing their digital capabilities, enabling them to amplify their online presence, engage effectively with their audiences, and drive greater social impact through innovative digital strategies and tools.');
+	page.setItem('hero_shot',"C:/Users/Snoaw/Downloads/_6ddce97f-cea8-483a-95e3-7b898c92e29e.jfif");
+	page.setItem('Digital Strategy_description','We guide you through all it takes to standout in the digital realm.');
+	page.setItem('Website Development_description','We provide websites do representing Non-Profit Organizations.');
+	page.setItem('Social Media Management_description','We help NPOs to set their social profiles for success and as well connect with the world.');
+	page.setItem('Online Fundraising_description','We provide professional support and guidance both in collecting donation and provide tools for accurate monitoring and reporting.');
+	page.setItem('Digital Strategy_price','$20');
+	page.setItem('Website Development_price','$15');
+	page.setItem('Social Media Management_price','$13');
+	page.setItem('Online Fundraising_price','$0');
+	page.setList('service_names',["Digital Strategy","Website Development","Social Media Management","Online Fundraising"])
+	page.setList('courses',["Html","CSS","JS"])
+</script>
